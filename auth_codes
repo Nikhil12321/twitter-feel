@@ -1,0 +1,8 @@
+app-only authentication	https://api.twitter.com/oauth2/token
+Request token URL	https://api.twitter.com/oauth/request_token
+Authorize URL	https://api.twitter.com/oauth/authorize
+Access token URL	https://api.twitter.com/oauth/access_token
+Consumer Key (API Key)	rsiAVwA19KoVffpA6iYQiKkvq
+Consumer Secret (API Secret)	4D6nOdmYkpSKCHVWGJ8ZiwAa6IketjUyrVAdoYs7aUEanJEJbB
+access token 245722711-WyLm9LBNkdRplOlMcPUrKgKh88PXjERluyqgfhQg
+access token secret rdxy3v6SOqgJWnIYazA5mdhbObWh8srF48jU9MuXOAO6l
