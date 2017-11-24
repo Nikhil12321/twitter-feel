@@ -43,8 +43,7 @@ clean_file = 'clean_data.csv'
 raw_tweets = csv.reader(open(raw_file, 'rb'), delimiter=',')
 
 # take only 100 tweets
-num_tweets = 10000
-
+num_tweets = 100000
 # take all the data and insert it into the new csv
 i = 0
 

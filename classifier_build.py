@@ -1,7 +1,8 @@
 import csv
 import math
-
-
+import string
+import re
+from sklearn.svm import LinearSVC
 
 def getFeatureVector(tweet, stopwords, featureList, idf):
 	featureVector = []
@@ -15,7 +16,7 @@ def getFeatureVector(tweet, stopwords, featureList, idf):
 		# check if the word stats with an alphabet
 		val = re.search(r"^[a-zA-Z][a-zA-Z0-9]*$", w)
 		# ignore if it is a stop word
-		if(w in stopwords or val is None):
+		if(w in stopwords or val is None or len(w) < 3):
 			continue
 		else:
 			featureVector.append(w)
@@ -47,18 +48,19 @@ def calculateWeight(feature_vector, featureList, idf, all_weight_vectors, num_tw
 		for f in feature_vector:
 			if f == feature:
 				count += 1
-		weight_dict[f] = count
+		weight_dict[feature] = count
 
 	# Calculation of actual weights begins now
+	# Check out that you have to explicitly make everything float
+	# as python does not do that.
 	size_of_feature_vector = len(feature_vector)*1.0
 	for feature in featureList:
 		value = 0
 		if feature in weight_dict:
 			value = weight_dict[feature]/size_of_feature_vector
-			value = value*math.log(num_tweets/idf[feature])
+			value = value*math.log(1.0*num_tweets/idf[feature])
 		weight.append(value)
 
-	
 	all_weight_vectors.append(weight)
 
 
@@ -83,8 +85,7 @@ for row in clean_tweets:
 	sentiment = row[1]
 	featureVector = getFeatureVector(tweet, stopwords, featureList, idf)
 	all_feature_vectors.append(featureVector)
-	all_sentiments.append(sentiment)
-
+	all_sentiments.append(int(sentiment))
 
 
 # Now, we calculate all the weights
@@ -92,3 +93,10 @@ all_weight_vectors = []
 num_tweets = 10000
 for vector in all_feature_vectors:
 	calculateWeight(vector, featureList, idf, all_weight_vectors, num_tweets)
+
+
+# KUDOS! Let us build the classifer now. I will be using sklearn's LinearSVC
+
+clf = LinearSVC(random_state = 0)
+clf.fit(all_weight_vectors, all_sentiments)
+
