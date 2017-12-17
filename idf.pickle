@@ -1559,9 +1559,9 @@ I1
 sS'plc'
 p520
 I1
-sS'graduated'
+sS'losing'
 p521
-I1
+I2
 sS'meyet'
 p522
 I1
@@ -2159,9 +2159,9 @@ I23
 sS'bloody'
 p720
 I1
-sS'losing'
+sS'graduated'
 p721
-I2
+I1
 sS'seashore'
 p722
 I1
@@ -3482,7 +3482,7 @@ I1
 sS'stone'
 p1161
 I1
-sS'package'
+sS'tease'
 p1162
 I1
 sS'ack'
@@ -5861,7 +5861,7 @@ I1
 sS'ride'
 p1954
 I1
-sS'tease'
+sS'package'
 p1955
 I1
 sS'praise'

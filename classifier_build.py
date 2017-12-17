@@ -4,6 +4,7 @@ import string
 import re
 from sklearn.svm import LinearSVC
 import pickle
+import cPickle
 
 def getFeatureVector(tweet, stopwords, featureList, idf):
 	featureVector = []
@@ -104,6 +105,11 @@ file_idf = open('idf.pickle', 'wb')
 pickle.dump(idf, file_idf)
 
 # KUDOS! Let us build the classifer now. I will be using sklearn's LinearSVC
-# clf = LinearSVC(random_state = 0)
-# clf.fit(all_weight_vectors, all_sentiments)
+clf = LinearSVC(random_state = 0)
+clf.fit(all_weight_vectors, all_sentiments)
+with open('classifier1k.pkl', 'wb') as fid:
+    cPickle.dump(clf, fid)    
+
+
+
 

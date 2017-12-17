@@ -2,6 +2,7 @@ import twitter
 import json
 import re
 import pickle
+import cPickle
 
 #start process_tweet
 def processTweet(tweet):
@@ -153,3 +154,8 @@ for vector in all_feature_vectors:
 ##############################################################################
 # Somewhere here, we also load the classifier if we are ever able to make it #
 ##############################################################################
+# load it again
+with open('classifier1k.pkl', 'rb') as fid:
+    clf_loaded = cPickle.load(fid)
+print cleaner_tweets[0]
+print clf_loaded.predict(all_weight_vectors[0])
