@@ -26,7 +26,7 @@ def processTweet(tweet):
 	replace_by = r'\1\1'
 	tweet = re.sub(expr, replace_by, tweet)
 	#strip of punctuation
-	tweet = re.sub('[!@#$.,:?"''"-;~=&*{}^()_/\/]', '', tweet)
+	tweet = re.sub('[|!@#$.,:?"''"-;~=&*{}^()_/\/]', '', tweet)
 	#trim
 	tweet = tweet.strip('\'"')
 	#Remove additional white spaces
@@ -43,7 +43,7 @@ clean_file = 'clean_data.csv'
 raw_tweets = csv.reader(open(raw_file, 'rb'), delimiter=',')
 
 # take only 100 tweets
-num_tweets = 100000
+num_tweets = 1000
 # take all the data and insert it into the new csv
 i = 0
 

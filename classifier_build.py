@@ -3,6 +3,7 @@ import math
 import string
 import re
 from sklearn.svm import LinearSVC
+import pickle
 
 def getFeatureVector(tweet, stopwords, featureList, idf):
 	featureVector = []
@@ -67,6 +68,7 @@ def calculateWeight(feature_vector, featureList, idf, all_weight_vectors, num_tw
 #Let us create a set of stopwords, basically a hashtable
 stopwords = set()
 stopwords_file = open('stopwords.txt', 'r')
+#this loop is just for removing the trailing newline character at the end of each stopword
 for word in stopwords_file:
 	stopwords.add(word.strip())
 
@@ -90,13 +92,18 @@ for row in clean_tweets:
 
 # Now, we calculate all the weights
 all_weight_vectors = []
-num_tweets = 10000
+num_tweets = 1000
 for vector in all_feature_vectors:
 	calculateWeight(vector, featureList, idf, all_weight_vectors, num_tweets)
 
+# Dump featureList, idf in a file to access them while predicting tweet in fetch_and_classify
+file_featurelist = open('featureList.pickle', 'wb')
+pickle.dump(featureList, file_featurelist)
+
+file_idf = open('idf.pickle', 'wb')
+pickle.dump(idf, file_idf)
 
 # KUDOS! Let us build the classifer now. I will be using sklearn's LinearSVC
-
-clf = LinearSVC(random_state = 0)
-clf.fit(all_weight_vectors, all_sentiments)
+# clf = LinearSVC(random_state = 0)
+# clf.fit(all_weight_vectors, all_sentiments)
 
