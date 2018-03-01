@@ -1,9 +1,9 @@
 Analyzing positive and negative comments about anything on twitter through machine learning
 Code has different files which do things independently of one another and DO NOT interact with each other
 
-#How does it work
+# How does it work
 
-##Let's make the classifier
+## Let's make the classifier
 **preprocess_tweets_for_training.py** : Quite a nice tool to clean up tweets. Takes tweet in the form of a csv file where there are 2 columns
 First column represents the tweet and the second the sentiment (1-positive, 2-negative). Processes the tweets, removes the crap and saves it
 in the clean_data file
@@ -16,7 +16,7 @@ I have saved the created classifier in classifier_1k file. Meaning that it is ma
 So this basically fetches only 100 tweets at once from the API (Limit of free twitter API) and classifies them as positive or negative sentiment and finds the percentage of sentiment.
 
 
-#But I just want to use it for my college project
+## But I just want to use it for my college project
 
 Don't worry. 
 
